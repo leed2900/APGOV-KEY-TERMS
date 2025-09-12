@@ -45,56 +45,94 @@
     <h1>AP GOV Unit 1 Terms</h1>
     <p id="definition">Loading...</p>
     <input type="text" id="answer" placeholder="Enter the correct term" />
-    <button onclick="submitAnswer()">Submit</button>
+    <button id="submitBtn" onclick="submitAnswer()">Submit</button>
     <div class="feedback" id="feedback"></div>
     <div id="scoreBox"></div>
   </div>
 
   <script>
     const terms = {
-  "Anti-Federalist": "Opposed the ratification of the Constitution and wanted more power reserved to state governments rather than a strong central government.",
-  "Article V": "Outlined how the Constitution could be amended, requiring either a two-thirds vote in both houses of Congress or a proposal from two-thirds of the state legislatures, with ratification by three-fourths of the states.",
-  "Articles of Confederation": "Highlighted key weaknesses such as the lack of centralized military power to address Shays’ Rebellion, lack of an executive branch to enforce laws, lack of a national court system, and lack of power to regulate interstate commerce or coin money.",
-  "Block grants": "National funding with minimal restrictions, preferred by states.",
-  "Brutus 1": "Adhered to popular democratic theory that emphasized the benefits of a small, decentralized republic while warning of the dangers to personal liberty from a large, centralized government.",
-  "Categorical grants": "National funding restricted to specific categories of expenditures; most commonly used and preferred by the national government.",
-  "Checks and balances": "Allow legal actions to be taken against public officials deemed to have abused their power.",
-  "Commerce clause": "Gives the national government the power to regulate interstate commerce, though its extent depends on Supreme Court interpretations.",
-  "Concurrent powers": "Powers shared between both levels of government such as taxation, making and enforcing laws, and building roads.",
-  "Constitutional Convention": "A meeting of delegates in 1787 intended to revise the Articles of Confederation, but ultimately drafted the U.S. Constitution establishing a stronger central government.",
-  "Declaration of Independence": "Drafted by Thomas Jefferson (with help from Adams and Franklin), restates the philosophy of natural rights, and provides a foundation for popular sovereignty.",
-  "Democracy": "A system of government in which power is vested in the people and exercised by them directly or through freely elected representatives.",
-  "Electoral College": "Created a system for electing the president by electors from each state rather than by popular vote or by congressional vote.",
-  "Elite democracy": "Emphasizes limited participation in politics and civil society.",
-  "Enumerated powers": "Powers explicitly written in the Constitution.",
-  "Faction": "A party or group that is often contentious or self-seeking.",
-  "Federalism": "The U.S. system of government in which power is shared between the national and state governments.",
-  "Federalist": "Supported ratification of the Constitution and a strong central government.",
-  "Federalist 10": "Focused on the superiority of a large republic in controlling the 'mischiefs of faction,' delegating authority to elected representatives and dispersing power between the states and national government.",
-  "Federalist 51": "Explains how constitutional provisions of separation of powers and checks and balances control potential abuses by majorities.",
-  "Fourteenth Amendment": "Includes the Due Process Clause and Equal Protection Clause as applied to the states.",
-  "Great Compromise": "Created a dual (bicameral) system of congressional representation with the House based on population and the Senate representing each state equally.",
-  "Impeachment": "The House formally charges an official with abuse of power or misconduct.",
-  "Implied powers": "Powers not specifically written in the Constitution but inferred from the Necessary and Proper Clause.",
-  "Limited government": "A government’s power cannot be absolute; the ideal of limited government is ensured by the interaction of these principles: Separation of powers, Checks and balances, Federalism, and Republicanism.",
-  "Mandates": "Requirements imposed by the national government on the states.",
-  "Natural rights": "All people have certain rights that cannot be taken away.",
-  "Necessary & Proper clause / Elastic clause": "Gives Congress the power to make laws related to carrying out its enumerated powers, though its extent depends on Supreme Court interpretations.",
-  "Participatory democracy": "Emphasizes broad participation in politics and civil society.",
-  "Pluralist democracy": "Emphasizes group-based activism by nongovernmental interests striving for impact on political decision making.",
-  "Popular sovereignty": "All government power comes from the consent of its people.",
-  "Ratification": "The act of consenting to the U.S. Constitution through state conventions, requiring 9 of the 13 states to ratify per Article VII.",
-  "Removal": "If the official is convicted in a Senate impeachment trial, they are removed from office.",
-  "Representative democracy": "A system of government in which all eligible citizens vote on representatives to make public policy for them; can take several forms including participatory democracy, pluralist democracy, and elite democracy.",
-  "Reserved powers": "Powers not delegated to the national government but reserved to the states, as stated in the Tenth Amendment.",
-  "Revenue sharing": "National funding with almost no restrictions on its use, though it is the least used form of funding.",
-  "Republicanism": "The democratic principle that the will of the people is reflected in government debates and decisions by their representatives.",
-  "Separation of powers": "Delegated specific powers to Congress, the president, and the courts, ensuring no one branch becomes too powerful; creates multiple access points for influence on public policy.",
-  "Shays’s Rebellion": "An armed uprising in western Massachusetts in opposition to high taxation and poor economic policies that exposed the weaknesses of the national government under the Articles of Confederation.",
-  "Social contract": "An implicit agreement among the people in a society to give up some freedoms to maintain social order.",
-  "Supremacy Clause": "Gives the national government and its laws precedence over state laws, though Supreme Court interpretations may define limits.",
-  "Tenth Amendment": "Defines the balance of power between the federal government and the states; establishes reserved powers of the states.",
-  "U.S. Constitution": "An example of a social contract that establishes a system of limited government; provides the blueprint for a unique form of democratic government in the United States."
+      "Anti-Federalist": "Opposed the ratification of the Constitution and wanted more power reserved to state governments rather than a strong central government.",
+      "Article V": "Outlined how the Constitution could be amended, requiring either a two-thirds vote in both houses of Congress or a proposal from two-thirds of the state legislatures, with ratification by three-fourths of the states.",
+      "Articles of Confederation": "Highlighted key weaknesses such as the lack of centralized military power to address Shays’ Rebellion, lack of an executive branch to enforce laws, lack of a national court system, and lack of power to regulate interstate commerce or coin money.",
+      "Block grants": "National funding with minimal restrictions, preferred by states.",
+      "Brutus 1": "Adhered to popular democratic theory that emphasized the benefits of a small, decentralized republic while warning of the dangers to personal liberty from a large, centralized government.",
+      "Categorical grants": "National funding restricted to specific categories of expenditures; most commonly used and preferred by the national government.",
+      "Checks and balances": "Allow legal actions to be taken against public officials deemed to have abused their power.",
+      "Commerce clause": "Gives the national government the power to regulate interstate commerce, though its extent depends on Supreme Court interpretations.",
+      "Concurrent powers": "Powers shared between both levels of government such as taxation, making and enforcing laws, and building roads.",
+      "Constitutional Convention": "A meeting of delegates in 1787 intended to revise the Articles of Confederation, but ultimately drafted the U.S. Constitution establishing a stronger central government.",
+      "Declaration of Independence": "Drafted by Thomas Jefferson (with help from Adams and Franklin), restates the philosophy of natural rights, and provides a foundation for popular sovereignty.",
+      "Democracy": "A system of government in which power is vested in the people and exercised by them directly or through freely elected representatives.",
+      "Electoral College": "Created a system for electing the president by electors from each state rather than by popular vote or by congressional vote.",
+      "Elite democracy": "Emphasizes limited participation in politics and civil society.",
+      "Enumerated powers": "Powers explicitly written in the Constitution.",
+      "Faction": "A party or group that is often contentious or self-seeking.",
+      "Federalism": "The U.S. system of government in which power is shared between the national and state governments.",
+      "Federalist": "Supported ratification of the Constitution and a strong central government.",
+      "Federalist 10": "Focused on the superiority of a large republic in controlling the 'mischiefs of faction,' delegating authority to elected representatives and dispersing power between the states and national government.",
+      "Federalist 51": "Explains how constitutional provisions of separation of powers and checks and balances control potential abuses by majorities.",
+      "Fourteenth Amendment": "Includes the Due Process Clause and Equal Protection Clause as applied to the states.",
+      "Great Compromise": "Created a dual (bicameral) system of congressional representation with the House based on population and the Senate representing each state equally.",
+      "Impeachment": "The House formally charges an official with abuse of power or misconduct.",
+      "Implied powers": "Powers not specifically written in the Constitution but inferred from the Necessary and Proper Clause.",
+      "Limited government": "A government’s power cannot be absolute; the ideal of limited government is ensured by the interaction of these principles: Separation of powers, Checks and balances, Federalism, and Republicanism.",
+      "Mandates": "Requirements imposed by the national government on the states.",
+      "Natural rights": "All people have certain rights that cannot be taken away.",
+      "Necessary and Proper Clause / Elastic Clause": "Gives Congress the power to make laws related to carrying out its enumerated powers, though its extent depends on Supreme Court interpretations.",
+      "Participatory democracy": "Emphasizes broad participation in politics and civil society.",
+      "Pluralist democracy": "Emphasizes group-based activism by nongovernmental interests striving for impact on political decision making.",
+      "Popular sovereignty": "All government power comes from the consent of its people.",
+      "Ratification": "The act of consenting to the U.S. Constitution through state conventions, requiring 9 of the 13 states to ratify per Article VII.",
+      "Removal": "If the official is convicted in a Senate impeachment trial, they are removed from office.",
+      "Representative democracy": "A system of government in which all eligible citizens vote on representatives to make public policy for them; can take several forms including participatory democracy, pluralist democracy, and elite democracy.",
+      "Reserved powers": "Powers not delegated to the national government but reserved to the states, as stated in the Tenth Amendment.",
+      "Revenue sharing": "National funding with almost no restrictions on its use, though it is the least used form of funding.",
+      "Republicanism": "The democratic principle that the will of the people is reflected in government debates and decisions by their representatives.",
+      "Separation of powers": "Delegated specific powers to Congress, the president, and the courts, ensuring no one branch becomes too powerful; creates multiple access points for influence on public policy.",
+      "Shays’s Rebellion": "An armed uprising in western Massachusetts in opposition to high taxation and poor economic policies that exposed the weaknesses of the national government under the Articles of Confederation.",
+      "Social contract": "An implicit agreement among the people in a society to give up some freedoms to maintain social order.",
+      "Supremacy Clause": "Gives the national government and its laws precedence over state laws, though Supreme Court interpretations may define limits.",
+      "Tenth Amendment": "Defines the balance of power between the federal government and the states; establishes reserved powers of the states.",
+      "U.S. Constitution": "An example of a social contract that establishes a system of limited government; provides the blueprint for a unique form of democratic government in the United States."
+    };
+
+    // Synonyms / acceptable variants
+    const synonyms = {
+      "Necessary and Proper Clause / Elastic Clause": [
+        "necessary and proper clause",
+        "elastic clause",
+        "necessary & proper clause"
+      ],
+      "U.S. Constitution": [
+        "us constitution",
+        "united states constitution",
+        "the constitution"
+      ],
+      "Great Compromise": [
+        "connecticut compromise",
+        "the great compromise"
+      ],
+      "Articles of Confederation": [
+        "the articles of confederation",
+        "articles"
+      ],
+      "Declaration of Independence": [
+        "the declaration of independence",
+        "declaration"
+      ],
+      "Fourteenth Amendment": [
+        "14th amendment",
+        "amendment 14"
+      ],
+      "Tenth Amendment": [
+        "10th amendment",
+        "amendment 10"
+      ],
+      "Shays’s Rebellion": [
+        "shays rebellion",
+        "shay's rebellion"
+      ]
     };
 
     const entries = Object.entries(terms).sort(() => Math.random() - 0.5);
@@ -106,28 +144,35 @@
         document.getElementById('definition').textContent = entries[current][1];
         document.getElementById('answer').value = '';
         document.getElementById('answer').focus();
+        document.getElementById('submitBtn').style.display = 'block';
       } else {
         document.getElementById('definition').textContent = 'Quiz Complete!';
         document.getElementById('answer').style.display = 'none';
-        document.querySelector('button').style.display = 'none';
+        document.getElementById('submitBtn').style.display = 'none';
         document.getElementById('scoreBox').textContent = `Final Score: ${score} / ${entries.length}`;
       }
     }
 
     function submitAnswer() {
       const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-      const correctAnswer = entries[current][0].toLowerCase();
+      const correctAnswer = entries[current][0];
       const feedback = document.getElementById('feedback');
 
-      if (userAnswer === correctAnswer) {
+      let isCorrect = userAnswer === correctAnswer.toLowerCase();
+      if (!isCorrect && synonyms[correctAnswer]) {
+        isCorrect = synonyms[correctAnswer].includes(userAnswer);
+      }
+
+      if (isCorrect) {
         feedback.textContent = 'Correct!';
         feedback.style.color = 'green';
         score++;
-      } 
-      else {
-        feedback.textContent = `Incorrect. The correct answer was: ${entries[current][0]}`;
+      } else {
+        feedback.textContent = `Incorrect. The correct answer was: ${correctAnswer}`;
         feedback.style.color = 'red';
       }
+
+      document.getElementById('submitBtn').style.display = 'none';
 
       current++;
       setTimeout(() => {
