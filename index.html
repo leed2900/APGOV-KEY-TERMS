@@ -97,87 +97,61 @@
       "U.S. Constitution": "An example of a social contract that establishes a system of limited government; provides the blueprint for a unique form of democratic government in the United States."
     };
 
-    // Synonyms / acceptable variants
     const synonyms = {
-      "Necessary and Proper Clause / Elastic Clause": [
-        "necessary and proper clause",
-        "elastic clause",
-        "necessary & proper clause"
-      ],
-      "U.S. Constitution": [
-        "us constitution",
-        "united states constitution",
-        "the constitution"
-      ],
-      "Great Compromise": [
-        "connecticut compromise",
-        "the great compromise"
-      ],
-      "Articles of Confederation": [
-        "the articles of confederation",
-        "articles"
-      ],
-      "Declaration of Independence": [
-        "the declaration of independence",
-        "declaration"
-      ],
-      "Fourteenth Amendment": [
-        "14th amendment",
-        "amendment 14"
-      ],
-      "Tenth Amendment": [
-        "10th amendment",
-        "amendment 10"
-      ],
-      "Shays’s Rebellion": [
-        "shays rebellion",
-        "shay's rebellion"
-      ]
+      "Necessary and Proper Clause / Elastic Clause": ["necessary and proper clause", "elastic clause", "necessary & proper clause"],
+      "U.S. Constitution": ["us constitution", "united states constitution", "the constitution"],
+      "Great Compromise": ["connecticut compromise", "the great compromise"],
+      "Articles of Confederation": ["the articles of confederation", "articles"],
+      "Declaration of Independence": ["the declaration of independence", "declaration"],
+      "Fourteenth Amendment": ["14th amendment", "amendment 14"],
+      "Tenth Amendment": ["10th amendment", "amendment 10"],
+      "Shays’s Rebellion": ["shays rebellion", "shay's rebellion"]
     };
 
-  const entries = Object.entries(terms).sort(() => Math.random() - 0.5);
-  let current = 0;
-  let score = 0;
+    const entries = Object.entries(terms).sort(() => Math.random() - 0.5);
+    let current = 0;
+    let score = 0;
 
-  function showQuestion() {
-    if (current < entries.length) {
-      document.getElementById('definition').textContent = entries[current][1].definition;
-      document.getElementById('answer').value = '';
-      document.getElementById('answer').focus();
-      document.querySelector('button').style.display = 'block'; // show button again
-    } else {
-      document.getElementById('definition').textContent = 'Quiz Complete!';
-      document.getElementById('answer').style.display = 'none';
-      document.querySelector('button').style.display = 'none';
-      document.getElementById('scoreBox').textContent = `Final Score: ${score} / ${entries.length}`;
-    }
-  }
-
-  function submitAnswer() {
-    const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-    const correctTerm = entries[current][0];
-    const correctAnswer = correctTerm.toLowerCase();
-    const aliases = entries[current][1].aliases.map(a => a.toLowerCase());
-    const feedback = document.getElementById('feedback');
-
-    if (userAnswer === correctAnswer || aliases.includes(userAnswer)) {
-      feedback.textContent = 'Correct!';
-      feedback.style.color = 'green';
-      score++;
-    } else {
-      feedback.textContent = `Incorrect. The correct answer was: ${correctTerm}`;
-      feedback.style.color = 'red';
+    function showQuestion() {
+      if (current < entries.length) {
+        document.getElementById('definition').textContent = entries[current][1];
+        document.getElementById('answer').value = '';
+        document.getElementById('answer').focus();
+        document.getElementById('submitBtn').style.display = 'block';
+      } else {
+        document.getElementById('definition').textContent = 'Quiz Complete!';
+        document.getElementById('answer').style.display = 'none';
+        document.getElementById('submitBtn').style.display = 'none';
+        document.getElementById('scoreBox').textContent = `Final Score: ${score} / ${entries.length}`;
+      }
     }
 
-    // Hide the submit button until next question
-    document.querySelector('button').style.display = 'none';
+    function submitAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      const correctTerm = entries[current][0];
+      const correctAnswer = correctTerm.toLowerCase();
+      const allValidAnswers = [correctAnswer, ...(synonyms[correctTerm] || []).map(s => s.toLowerCase())];
+      const feedback = document.getElementById('feedback');
 
-    current++;
-    setTimeout(() => {
-      feedback.textContent = '';
-      showQuestion();
-    }, 2000);
-  }
+      if (allValidAnswers.includes(userAnswer)) {
+        feedback.textContent = 'Correct!';
+        feedback.style.color = 'green';
+        score++;
+      } else {
+        feedback.textContent = `Incorrect. The correct answer was: ${correctTerm}`;
+        feedback.style.color = 'red';
+      }
 
-  window.onload = showQuestion;
-</script>
+      document.getElementById('submitBtn').style.display = 'none';
+
+      current++;
+      setTimeout(() => {
+        feedback.textContent = '';
+        showQuestion();
+      }, 2000);
+    }
+
+    window.onload = showQuestion;
+  </script>
+</body>
+</html>
